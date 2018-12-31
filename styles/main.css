@@ -20,6 +20,20 @@ dl, dd, dt {
   padding: 0;
 }
 
+.main-menu {
+  height: 464px;
+  transition: all 0.5s ease;
+}
+
+.main-menu.collapsed {
+  height: 64px;
+}
+
+.main-menu ul li {
+  position: relative;
+  height: 36px;
+}
+
 .non-party-members {
   height: 216px;
 }
@@ -36,7 +50,7 @@ dl, dd, dt {
 }
 
 .menu-item {
-  position: relative;
+  position: absolute;
   text-decoration: none;
   color: white;
 }
@@ -44,7 +58,7 @@ dl, dd, dt {
 .menu-item:hover:before,
 .menu-item:focus:before {
   display: block;
-  background-image: url('./images/cursor.png');
+  background-image: url('../images/cursor.png');
   content: '';
   position: absolute;
   height: 24px;
@@ -62,9 +76,6 @@ dl, dd, dt {
   position: absolute;
   top: -5px;
   left: 4px;
-  text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+  background-color: black;
+  padding: 0px 2px;
 }
