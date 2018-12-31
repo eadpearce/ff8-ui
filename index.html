@@ -8,56 +8,59 @@
     <link rel="stylesheet" href="./styles/tachyons.css">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body class="bg-black white">
-    <main id="content" class="center">
+    <main id="app" class="center relative" v-on:keydown="handleAppKeydown">
 
-      <aside class="fr w-25">
-        <nav class="bg-grey main-menu">
+      <aside class="fr w-25 relative right-content" id="main-menu-container">
+        <nav class="bg-grey main-menu ml2 mb2" role="menubar" id="main-menu">
           <ul class="list pa2 f2 relative">
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="junction">Junction</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="item">Item</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="magic">Magic</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="status">Status</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="gf">GF</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="ability">Ability</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="switch">Switch</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="card">Card</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="config">Config</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="tutorial">Tutorial</a></li>
-            <li class="mv1 absolute"><a href="#" class="menu-item" id="save">Save</a></li>
+            <li v-for="item in items" class="mv1 absolute">
+              <a href="#"
+                class="menu-item"
+                role="menuitem"
+                v-bind:id="item.id"
+                v-on:click="showMenu"
+                v-on:focus="[mainMenuOpen ? menuHelp = item.helpText : menuHelp = menuHelp]"
+                v-on:mouseover="[mainMenuOpen ? menuHelp = item.helpText : menuHelp = menuHelp]">
+                {{ item.title }}
+              </a>
+            </li>
           </ul>
         </nav>
-
-        <div class="bg-grey relative pa2 f3">
-          <ul class="list">
-            <li>
-              <dl>
-                <dt class="pv1 db fl" aria-label="Play time">Play</dt>
-                <dd class="pv1 db fr">56:47</dd>
-                <dt class="pv1 cb db fl" aria-label="SeeD Rank">SeeD</dt>
-                <dd class="pv1 db fr">A</dd>
-                <div class="cf"></div>
-              </dl>
-            </li>
-            <li aria-label="Gil" class="fr">82145G</li>
-          </ul>
-          <div class="cf"></div>
-        </div>
-
       </aside>
 
-      <div class="fl w-75 relative h-100">
-        <header class="bg-grey ph3">
-          <h2 class="subheading">Help</h2>
-          <h1 class="mb2 mt3" id="menu-title">Junction Menu</h1>
-        </header>
+      <div class="bg-grey relative pa2 f3 player-stats" id="player-stats">
+        <ul class="list">
+          <li>
+            <dl>
+              <dt class="pv1 db fl" aria-label="Play time">Play</dt>
+              <dd class="pv1 db fr">56:47</dd>
+              <dt class="pv1 cb db fl" aria-label="SeeD Rank">SeeD</dt>
+              <dd class="pv1 db fr">A</dd>
+              <div class="cf"></div>
+            </dl>
+          </li>
+          <li aria-label="Gil" class="fr">82145G</li>
+        </ul>
+        <div class="cf"></div>
+      </div>
 
-        <section class="ml3 f3">
+      <section class="fl w-75 relative h-100" id="left-content">
+
+        <div class="mb2">
+          <header class="bg-grey ph3 menu-help" id="menu-help">
+            <h2 class="subheading">Help</h2>
+            <h1 class="mb2 mt3" id="menu-title">{{ menuHelp }}</h1>
+          </header>
+        </div>
+
+
+        <section class="ml3 f3" id="party">
           <div aria-label="Party members">
 
-            <div class="bg-grey ph3">
+            <div class="bg-grey ph3 mr2 mb2">
               <p class="subheading">Status</p>
               <dl class="mt3 mb2 relative">
                 <dt class="dib f2 normal w-third">Rinoa</dt>
@@ -77,7 +80,7 @@
               </dl>
             </div>
 
-            <div class="bg-grey ph3">
+            <div class="bg-grey ph3 mr2 mb2">
               <p class="subheading">Status</p>
               <dl class="mt3 mb2 relative">
                 <dt class="dib f2 normal w-third">Squall</dt>
@@ -97,7 +100,7 @@
               </dl>
             </div>
 
-            <div class="bg-grey ph3">
+            <div class="bg-grey ph3 mr2 mb2">
               <p class="subheading">Status</p>
               <dl class="mt3 mb2 relative">
                 <dt class="dib f2 normal w-third">Irvine</dt>
@@ -119,7 +122,7 @@
 
           </div>
 
-          <div class="list bg-grey pa3 pb5 non-party-members" aria-label="Non-party members" class="bg-grey">
+          <div class="list bg-grey pa3 pb5 mr2 mb2 non-party-members" aria-label="Non-party members" class="bg-grey">
 
             <div class="db mb2 fl w-50">
               <dl>
@@ -160,10 +163,48 @@
           </div>
         </section>
 
-        <p aria-label="Location" class="bg-grey f2 ph2 pv3">B-Garden- Hall</p>
+        <p aria-label="Location" class="bg-grey f2 ph2 pv3" id="location">B-Garden- Hall</p>
 
-      </div>
+      </section>
+
+      <section class="gf-menu submenu hidden db fl h-100 w-100" id="gf-menu">
+
+        <header class="w-75 mb2" id="submenu-header">
+          <div class="bg-grey ph3 submenu-header">
+            <h1 class="mb2 mt3" id="menu-title">&nbsp;</h1>
+          </div>
+        </header>
+
+        <div class="w-100">
+          <div class="menu-help bg-grey ph3 mh4">
+            <h2 class="subheading">Help</h2>
+            <h3 class="mb2 mt3 f2" id="gf-menu-title">GF {{ menuHelp }}</h3>
+          </div>
+        </div>
+
+        <section class="mt2 bg-grey gf-list pa3" id="gf-list">
+          <h2 class="subheading">GF</h2>
+          <ul>
+            <li class="db fl eigth pa2" v-for="gf in gfs">
+              <a href="#" class="db gf-portrait relative"
+                v-bind:title="gf.name"
+                v-on:focus="menuHelp = gf.name"
+                v-on:mouseover="menuHelp = gf.name">
+                <img class="w-100" v-bind:src="gf.image" v-bind:alt="gf.name">
+              </a>
+              <p class="f3 b pt1 pb3 font-play">
+                <span class="db fl" aria-label="Level">Lv</span>
+                <span class="db fr">{{ gf.level }}</span>
+                <span class="cf"></span>
+              </p>
+            </li>
+            <div class="cf"></div>
+          </ul>
+        </section>
+      </section>
 
     </main>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
