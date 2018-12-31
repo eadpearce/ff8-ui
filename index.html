@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Final Fantasy VIII UI</title>
     <link href="https://fonts.googleapis.com/css?family=Play:700|Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="tachyons.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/tachyons.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
@@ -14,19 +14,19 @@
     <main id="content" class="center">
 
       <aside class="fr w-25">
-        <nav class="bg-grey relative">
-          <ul class="list pa2 f2">
-            <li class="mv1"><a href="#" class="menu-item">Junction</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Item</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Magic</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Status</a></li>
-            <li class="mv1"><a href="#" class="menu-item">GF</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Ability</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Switch</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Card</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Config</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Tutorial</a></li>
-            <li class="mv1"><a href="#" class="menu-item">Save</a></li>
+        <nav class="bg-grey main-menu">
+          <ul class="list pa2 f2 relative">
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="junction">Junction</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="item">Item</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="magic">Magic</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="status">Status</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="gf">GF</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="ability">Ability</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="switch">Switch</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="card">Card</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="config">Config</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="tutorial">Tutorial</a></li>
+            <li class="mv1 absolute"><a href="#" class="menu-item" id="save">Save</a></li>
           </ul>
         </nav>
 
