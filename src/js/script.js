@@ -18,16 +18,16 @@ var app = new Vue({
 });
 
 function showMenu(e) {
-  if (this.mainMenuOpen) {
-    this.mainMenuOpen = false;
+  if (app.mainMenuOpen) {
+    app.mainMenuOpen = false;
     closeMainMenu(e);
-    this.currentMenu = e.target.id;
+    app.currentMenu = e.target.id;
     $('#'+e.target.id+'-menu').delay(250).fadeIn(250);
   } else return;
 }
 
 function closeMainMenu(e) {
-  this.mainMenuOpen = false;
+  app.mainMenuOpen = false;
   $('.main-menu').addClass('collapsed');
   $('#main-menu-container').addClass('collapsed');
 
@@ -35,9 +35,9 @@ function closeMainMenu(e) {
   $('#player-stats').fadeOut(500);
 
   // copy the array
-  var remainingItems = this.menuIDs.slice(0);
+  var remainingItems = app.menuIDs.slice(0);
   // remove this id from the array as we want to hide the others
-  var index = this.menuIDs.indexOf(e.target.id);
+  var index = app.menuIDs.indexOf(e.target.id);
   remainingItems.splice(index, 1);
 
   // move selected item to top

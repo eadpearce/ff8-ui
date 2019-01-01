@@ -1,0 +1,31 @@
+{
+  "name": "ff8-ui",
+  "version": "1.0.0",
+  "description": "FFVIII UI recreated for the browser",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "gulp build"
+  },
+  "author": "eadpearce @ github",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.24.6",
+    "del": "^3.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-ejs-layouts": "^2.5.0",
+    "forever": "^0.15.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1",
+    "morgan": "^1.9.0",
+    "run-sequence": "^2.2.1",
+    "vue": "^2.5.21"
+  }
+}
