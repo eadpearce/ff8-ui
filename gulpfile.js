@@ -69,5 +69,5 @@ gulp.task('default', ['sass', 'css', 'images', 'vendor-js', 'js', 'serve'], () =
 });
 
 gulp.task('build', cb => {
-  runsequence('clean', ['css', 'sass', 'js', 'images'], cb);
+  runsequence('clean', ['css', 'sass', 'js', 'vendor-js', 'images'], cb);
 });
