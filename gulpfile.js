@@ -23,7 +23,10 @@ gulp.task('js', () => {
 });
 
 gulp.task('vendor-js', () => {
-  return gulp.src('node_modules/vue/dist/vue.js')
+  return gulp.src([
+    'node_modules/vue/dist/vue.js',
+    'src/vendor/js/*.js'
+  ])
     .pipe(gulp.dest('public/js'));
 });
 
