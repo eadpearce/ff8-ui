@@ -24,6 +24,11 @@ dl, dd, dt {
   padding: 0;
 }
 
+.help-section {
+  position: absolute;
+  top: 600px;
+}
+
 .right-content {
   height: 600px;
 }
@@ -39,7 +44,7 @@ dl, dd, dt {
 }
 
 .submenu-header {
-  height: 64px;
+  height: 56px;
 }
 
 .menu-help {
@@ -100,10 +105,16 @@ dl, dd, dt {
   color: white;
 }
 
-.gf-portrait:hover:before,
-.gf-portrait:focus:before,
-.menu-item:hover:before,
-.menu-item:focus:before {
+.pointer {
+  position: relative;
+}
+
+.pointer:focus {
+  outline: none;
+}
+
+.pointer:hover:before,
+.pointer:focus:before {
   display: block;
   background-image: url('../images/cursor.png');
   content: '';

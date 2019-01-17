@@ -5,8 +5,8 @@
     <title>Final Fantasy VIII UI</title>
     <link href="https://fonts.googleapis.com/css?family=Play:700|Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="js/vue.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/vue.js"></script>
   </head>
   <body class="bg-black white">
     <main id="app" class="center relative" v-on:keydown="handleAppKeydown">
@@ -14,9 +14,9 @@
       <aside class="fr w-25 relative right-content" id="main-menu-container">
         <nav class="bg-grey main-menu ml2 mb2" role="menubar" id="main-menu">
           <ul class="list pa2 f2 relative">
-            <li v-for="item in items" class="mv1 absolute">
+            <li v-for="item in mainMenuItems" class="mv1 absolute">
               <a href="#"
-                class="menu-item"
+                class="menu-item pointer"
                 role="menuitem"
                 v-bind:id="item.id"
                 v-on:click="showMenu"
@@ -58,60 +58,20 @@
         <section class="ml3 f3" id="party">
           <div aria-label="Party members">
 
-            <div class="bg-grey ph3 mr2 mb2">
+            <div v-for="member in partyMembers" class="bg-grey ph3 mr2 mb2">
               <p class="subheading">Status</p>
               <dl class="mt3 mb2 relative">
-                <dt class="dib f2 normal w-third">Rinoa</dt>
+                <dt class="dib f2 normal w-third">{{ member.name }}</dt>
 
                 <dd class="db fr w-two-thirds f3 mt1">
                   <dl class="db">
                     <div class="db fl ph2 w-third">
                       <dt class="db fl" aria-label="Level">Lv</dt>
-                      <dd class="db fr">100</dd>
+                      <dd class="db fr">{{ member.level }}</dd>
                     </div>
                     <div class="db fl ph2 w-two-thirds">
                       <dt class="db fl" aria-label="Hit Points">HP</dt>
-                      <dd class="db fr">9999/9999</dd>
-                    </div>
-                  </dl>
-                </dd>
-              </dl>
-            </div>
-
-            <div class="bg-grey ph3 mr2 mb2">
-              <p class="subheading">Status</p>
-              <dl class="mt3 mb2 relative">
-                <dt class="dib f2 normal w-third">Squall</dt>
-
-                <dd class="db fr w-two-thirds f3 mt1">
-                  <dl class="db">
-                    <div class="db fl ph2 w-third">
-                      <dt class="db fl" aria-label="Level">Lv</dt>
-                      <dd class="db fr">100</dd>
-                    </div>
-                    <div class="db fl ph2 w-two-thirds">
-                      <dt class="db fl" aria-label="Hit Points">HP</dt>
-                      <dd class="db fr">9999/9999</dd>
-                    </div>
-                  </dl>
-                </dd>
-              </dl>
-            </div>
-
-            <div class="bg-grey ph3 mr2 mb2">
-              <p class="subheading">Status</p>
-              <dl class="mt3 mb2 relative">
-                <dt class="dib f2 normal w-third">Irvine</dt>
-
-                <dd class="db fr w-two-thirds f3 mt1">
-                  <dl class="db">
-                    <div class="db fl ph2 w-third">
-                      <dt class="db fl" aria-label="Level">Lv</dt>
-                      <dd class="db fr">100</dd>
-                    </div>
-                    <div class="db fl ph2 w-two-thirds">
-                      <dt class="db fl" aria-label="Hit Points">HP</dt>
-                      <dd class="db fr">9999/9999</dd>
+                      <dd class="db fr">{{ member.stats.hp.value }}/{{ member.stats.hp.value }}</dd>
                     </div>
                   </dl>
                 </dd>
@@ -122,37 +82,17 @@
 
           <div class="list bg-grey pa3 pb5 mr2 mb2 non-party-members" aria-label="Non-party members" class="bg-grey">
 
-            <div class="db mb2 fl w-50">
+            <div v-for="member in nonPartyMembers" class="db mb2 fl w-50">
               <dl>
-                <dt class="normal mv0">Selphie</dt>
+                <dt class="normal mv0">{{ member.name }}</dt>
                 <dd>
                   <dl>
                     <dt class="dib" aria-label="Level">Lv</dt>
-                    <dd class="dib">100</dd>
+                    <dd class="dib">{{ member.level }}</dd>
                     <dt class="dib" aria-label="Hit Points">HP</dt>
-                    <dd class="dib">9999/9999</dd>
+                    <dd class="dib">{{ member.hp }}/{{ member.hp }}</dd>
                   </dl>
                 </dd>
-              </dl>
-            </div>
-
-            <div class="db mb2 fl w-50">
-              <h2 class="normal mv0">Zell</h2>
-              <dl>
-                <dt class="dib" aria-label="Level">Lv</dt>
-                <dd class="dib">100</dd>
-                <dt class="dib" aria-label="Hit Points">HP</dt>
-                <dd class="dib">9999/9999</dd>
-              </dl>
-            </div>
-
-            <div class="db mb2 fl w-50">
-              <h2 class="normal mv0">Quistis</h2>
-              <dl>
-                <dt class="dib" aria-label="Level">Lv</dt>
-                <dd class="dib">100</dd>
-                <dt class="dib" aria-label="Hit Points">HP</dt>
-                <dd class="dib">9999/9999</dd>
               </dl>
             </div>
 
@@ -165,11 +105,18 @@
 
       </section>
 
+      <div class="cf"></div>
+
+      <aside class="mt2 pa3 help-section">
+        <h2 class="f3 b mb3">Help</h2>
+        <p class="measure">You can navigate the menus with the keyboard by tabbing or with the mouse. To exit out of the current menu press the escape key.</p>
+      </aside>
+
       <section class="gf-menu submenu hidden db fl h-100 w-100" id="gf-menu">
 
-        <header class="w-75 mb2" id="submenu-header">
-          <div class="bg-grey ph3 submenu-header">
-            <h1 class="mb2 mt3" id="menu-title">&nbsp;</h1>
+        <header class="w-75 mb2" id="gf-submenu-header">
+          <div class="bg-grey ph3 mt2 submenu-header">
+            <p class="mb2 mt3" id="gf-menu-title">&nbsp;</p>
           </div>
         </header>
 
@@ -184,7 +131,7 @@
           <h2 class="subheading">GF</h2>
           <ul>
             <li class="db fl eigth pa2" v-for="gf in gfs">
-              <a href="#" class="db gf-portrait relative"
+              <a href="#" class="db gf-portrait relative pointer"
                 v-bind:title="gf.name"
                 v-on:focus="menuHelp = gf.name"
                 v-on:mouseover="menuHelp = gf.name">
@@ -199,6 +146,34 @@
             <div class="cf"></div>
           </ul>
         </section>
+      </section>
+
+      <section class="junction-menu submenu hidden db fl h-100 w-100" id="junction-menu">
+
+        <header class="w-75 mb2" id="junction-submenu-header">
+          <nav class="bg-grey ph3 mt2 submenu-header">
+            <ul class="f2 mt2">
+              <li v-for="item in junctionMenuItems" class="db fl mh3">
+                <a href="#"
+                  class="db white link pointer"
+                  role="menuitem"
+                  v-bind:id="item.id"
+                  v-on:focus="[menuHelp = item.helpText]"
+                  v-on:mouseover="[menuHelp = item.helpText]">
+                  {{ item.title }}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <section class="w-100 ph4">
+          <div class="menu-help bg-grey ph3">
+            <h2 class="subheading">Help</h2>
+            <h3 class="mb2 mt3 f2" id="junction-menu-title">{{ menuHelp }}</h3>
+          </div>
+        </section>
+
       </section>
 
     </main>

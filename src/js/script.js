@@ -2,7 +2,10 @@
 var app = new Vue({
   el: '#app',
   data: {
-    items: menuItems,
+    mainMenuItems: mainMenuItems,
+    junctionMenuItems: junctionMenuItems,
+    partyMembers: partyMembers,
+    nonPartyMembers: nonPartyMembers,
     menuIDs: menuIDs,
     menuHelp: 'Junction Menu',
     mainMenuOpen: true,
@@ -63,10 +66,9 @@ function closeMainMenu(e) {
 
 function handleAppKeydown(e) {
   // reopen main menu on escape
-  if (e.which == 27) {
+  if (e.which === 27) {
     this.mainMenuOpen = true;
-    if (this.currentMenu != 'main') {
-      console.log('close', this.currentMenu);
+    if (this.currentMenu !== 'main') {
       $('#'+this.currentMenu+'-menu').fadeOut(250);
     }
 
