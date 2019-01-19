@@ -1,0 +1,52 @@
+
+// MAIN MENU
+// ==========
+
+.help-section {
+  position: absolute;
+  top: 600px;
+}
+
+.right-content {
+  height: 600px;
+}
+
+.right-content.collapsed {
+  height: auto;
+}
+
+.menu-help {
+  height: 64px;
+}
+
+.main-menu {
+  height: 464px;
+  transition: all 0.5s ease;
+}
+
+.main-menu.collapsed {
+  height: 64px;
+}
+
+.main-menu ul li {
+  position: relative;
+  height: 36px;
+}
+
+.non-party-members {
+  height: 232px;
+}
+
+.player-stats {
+  height: 112px;
+  width: 192px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.menu-item {
+  position: absolute;
+  text-decoration: none;
+  color: white;
+}

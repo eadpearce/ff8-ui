@@ -1,0 +1,15 @@
+
+// JUNCTION SCREEN
+// ================
+
+.drop-shadow {
+  text-shadow: 2px 2px 0px #000;
+}
+
+.inactive {
+  position: absolute;
+  left: 800px;
+  top: 0;
+  width: 800px;
+  opacity: 0;
+}
