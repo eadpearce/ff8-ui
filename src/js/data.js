@@ -284,9 +284,12 @@ const stats2 =[
   }
 ];
 
+const partyMemberIDs = ['quistis', 'squall', 'zell'];
+
 const partyMembers = [
   {
     name: 'Quistis',
+    className: '',
     image: './images/quistis.png',
     id: 'quistis',
     level: 100,
@@ -342,6 +345,7 @@ const partyMembers = [
   },
   {
     name: 'Squall',
+    className: 'inactive-right',
     image: './images/squall.png',
     id: 'squall',
     level: 100,
@@ -397,6 +401,7 @@ const partyMembers = [
   },
   {
     name: 'Zell',
+    className: 'inactive-left',
     id: 'zell',
     image: './images/zell.png',
     level: 100,

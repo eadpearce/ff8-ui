@@ -6,10 +6,40 @@
   text-shadow: 2px 2px 0px #000;
 }
 
-.inactive {
+.locked {
+  .stat-unjunctioned,
+  .stat-name {
+    color: #aaa;
+  }
+
+  .stat-unjunctioned {
+    text-shadow: -2px -2px 0 #000;
+  }
+
+  dd ul li:first-child {
+    letter-spacing: .25em;
+  }
+}
+
+.junction-character {
+  transition: all ease 0.2s;
+  opacity: 1;
+  left: 0;
+  width: 100%;
   position: absolute;
-  left: 800px;
+}
+
+.inactive-right,
+.inactive-left {
+  position: absolute;
   top: 0;
-  width: 800px;
   opacity: 0;
+}
+
+.inactive-left {
+  left: -800px;
+}
+
+.inactive-right {
+  left: 800px;
 }

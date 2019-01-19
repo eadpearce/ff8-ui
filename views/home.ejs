@@ -174,14 +174,14 @@
           </div>
         </section>
 
-        <section class="w-100 ph3 relative mt3 overflow-hidden" id="junction-menu-container">
+        <section class="w-100 h-100 relative mt3 overflow-hidden" id="junction-menu-container">
 
           <article class="junction-character"
-            v-bind:class="[currentCharacter == character.id ? 'active' : 'inactive']"
-            v-for="character in partyMembers"
+            v-for="(character, index) in partyMembers"
+            v-bind:class="character.className"
             v-bind:id="character.id">
 
-            <div class="w-100">
+            <div class="w-100 ph3">
               <div class="w-50 db fl f2 profile">
                 <img class="fl h4 mr3"
                   v-bind:src="character.image"
@@ -243,15 +243,17 @@
                 <div class="w-50 fl pl2">
                   <div>&nbsp;</div>
                   <div class="mb1"
+                    v-bind:class="[character.stats[stat.id].unlocked ? '' : 'locked']"
                     v-for="stat in stats2">
-                    <dt class="db fl"
+                    <dt class="db fl stat-name"
                       v-bind:title="stat.help"
                       v-bind:aria-label="stat.verboseName">
                       {{ stat.name }}</dt>
                     <dd class="db fr w-75">
                       <ul>
-                        <li class="db fl w-two-thirds">{{ character.stats[stat.id].magic }}</li>
-                        <li class="db fr w-third tr">{{ character.stats[stat.id].value }}</li>
+                        <li v-if="!character.stats[stat.id].unlocked" class="db fl w-two-thirds stat-unjunctioned">______</li>
+                        <li v-else class="db fl w-two-thirds stat-junctioned">{{ character.stats[stat.id].magic }}</li>
+                        <li class="db fr w-third tr stat-value">{{ character.stats[stat.id].value }}</li>
                       </ul>
                     </dd>
                     <div class="cf"></div>

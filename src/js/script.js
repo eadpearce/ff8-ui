@@ -5,14 +5,15 @@ var app = new Vue({
     mainMenuItems: mainMenuItems,
     junctionMenuItems: junctionMenuItems,
     partyMembers: partyMembers,
+    partyMemberIDs: partyMemberIDs,
     nonPartyMembers: nonPartyMembers,
     menuIDs: menuIDs,
     menuHelp: 'Junction Menu',
     mainMenuOpen: true,
     currentMenu: 'main',
+    currentCharacter: 0,
     activeClass: 'active',
     gfs: gfs,
-    currentCharacter: 'quistis',
     stats1: stats1,
     stats2: stats2
   },
@@ -20,6 +21,7 @@ var app = new Vue({
     showMenu: showMenu,
     closeMainMenu: closeMainMenu,
     handleAppKeydown: handleAppKeydown,
+    cycleCharacters: cycleCharacters,
   }
 });
 
@@ -67,6 +69,7 @@ function closeMainMenu(e) {
 }
 
 function handleAppKeydown(e) {
+
   // reopen main menu on escape
   if (e.which === 27) {
     this.mainMenuOpen = true;
@@ -96,4 +99,41 @@ function handleAppKeydown(e) {
 
     this.currentMenu = 'main';
   }
+
+  if (this.currentMenu === 'junction') {
+    if (e.which === 39) { // right arrow
+      cycleCharacters('left');
+    } else if (e.which === 37) { // left arrow
+      cycleCharacters('right');
+    }
+  }
+}
+
+function cycleCharacters(forward) {
+  const currentCharacterID = app.partyMemberIDs[app.currentCharacter];
+  let backward;
+  if (forward === 'right') backward = 'left';
+  else backward = 'right';
+
+  // move the character on forward side to backward side
+  $(`#junction-menu .inactive-${forward}`)
+    .removeClass(`inactive-${forward}`)
+    .addClass(`inactive-${backward}`);
+
+  // move starting character to forward side
+  $('#'+currentCharacterID).addClass(`inactive-${forward}`);
+
+  // update new currentCharacter
+  if (forward == 'left') {
+    if (app.currentCharacter < 2) app.currentCharacter++;
+    else app.currentCharacter = 0;
+  } else {
+    if (app.currentCharacter > 0) app.currentCharacter--;
+    else app.currentCharacter = 2;
+  }
+
+  // move new character to centre
+  const nextCharacter = partyMemberIDs[app.currentCharacter];
+  $('#'+nextCharacter).removeClass(`inactive-${backward}`);
+
 }
