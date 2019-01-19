@@ -1,96 +1,112 @@
 
 const gfs = [
   {
+    help: 'GF Quezacotl',
     name: 'Quezacotl',
     image: './images/quezacotl.png',
     id: 'quezacotl',
     level: 20,
   },
   {
+    help: 'GF Shiva',
     name: 'Shiva',
     image: './images/shiva.png',
     id: 'shiva',
     level: 24,
   },
   {
+    help: 'GF Ifrit',
     name: 'Ifrit',
     image: './images/ifrit.png',
     id: 'ifrit',
     level: 18,
   },
   {
+    help: 'GF Siren',
     name: 'Siren',
     image: './images/siren.png',
     id: 'siren',
     level: 21,
   },
   {
+    help: 'GF Brothers',
     name: 'Brothers',
     image: './images/brothers.png',
     id: 'brothers',
     level: 22,
   },
   {
+    help: 'GF Diablos',
     name: 'Diablos',
     image: './images/diablos.png',
     id: 'diablos',
     level: 20,
   },
   {
+    help: 'GF Carbuncle',
     name: 'Carbuncle',
     image: './images/carbuncle.png',
     id: 'carbuncle',
     level: 25,
   },
   {
+    help: 'GF Leviathan',
     name: 'Leviathan',
     image: './images/leviathan.png',
     id: 'leviathan',
     level: 20,
   },
   {
+    help: 'GF Pandemona',
     name: 'Pandemona',
     image: './images/pandemona.png',
     id: 'pandemona',
     level: 20,
   },
   {
+    help: 'GF Cerberus',
     name: 'Cerberus',
     image: './images/cerberus.png',
     id: 'cerberus',
     level: 20,
   },
   {
+    help: 'GF Alexander',
     name: 'Alexander',
     image: './images/alexander.png',
     id: 'alexander',
     level: 20,
   },
   {
+    help: 'GF Doomtrain',
     name: 'Doomtrain',
     image: './images/doomtrain.png',
     id: 'doomtrain',
     level: 20,
   },
   {
+    help: 'GF Bahamut',
     name: 'Bahamut',
     image: './images/bahamut.png',
     id: 'bahamut',
     level: 20,
   },
   {
+    help: 'GF Cactuar',
     name: 'Cactuar',
     image: './images/cactuar.png',
     id: 'cactuar',
     level: 20,
   },
   {
+    help: 'GF Tonberry',
     name: 'Tonberry',
     image: './images/tonberry.png',
     id: 'tonberry',
     level: 20,
   },
   {
+    help: 'GF Eden',
     name: 'Eden',
     image: './images/eden.png',
     id: 'eden',
@@ -208,9 +224,71 @@ const mainMenuItems = [
   }
 ];
 
+const stats1 = [
+  {
+    id: 'hp',
+    name: 'HP',
+    verboseName: 'Hit points',
+    help: 'Amount of life'
+  },
+  {
+    id: 'str',
+    name: 'Str',
+    verboseName: 'Strength',
+    help: 'Power of physical attacks and limit breaks'
+  },
+  {
+    id: 'vit',
+    name: 'Vit',
+    verboseName: 'Vitality',
+    help: 'Physical defence'
+  },
+  {
+    id: 'mag',
+    name: 'Mag',
+    verboseName: 'Magic',
+    help: 'Power of magic attacks'
+  },
+  {
+    id: 'spr',
+    name: 'Spr',
+    verboseName: 'Spirit',
+    help: 'Magic defence'
+  }
+];
+
+const stats2 =[
+  {
+    id: 'spd',
+    name: 'Spd',
+    verboseName: 'Speed',
+    help: 'Rate at which the ATB gauge fills'
+  },
+  {
+    id: 'eva',
+    name: 'Eva',
+    verboseName: 'Evade',
+    help: 'Chance of dodging physical attacks'
+  },
+  {
+    id: 'hit',
+    name: 'Hit',
+    verboseName: 'Accuracy',
+    help: 'Rate at which physical attacks land successfully'
+  },
+  {
+    id: 'luck',
+    name: 'Luck',
+    verboseName: 'Luck',
+    help: 'Affects accuracy, critical hit rate and evasion'
+  }
+];
+
 const partyMembers = [
   {
     name: 'Quistis',
+    image: './images/quistis.png',
+    id: 'quistis',
     level: 100,
     skills: ['Attack', 'Recover', 'Magic', 'Item'],
     gfs: ['Quezacotl', 'Brothers', 'Pandemona', 'Alexander', 'Doomtrain'],
@@ -264,6 +342,8 @@ const partyMembers = [
   },
   {
     name: 'Squall',
+    image: './images/squall.png',
+    id: 'squall',
     level: 100,
     gfs: ['Siren', 'Carbuncle', 'Leviathan', 'Cerberus', 'Bahamut', 'Cactuar'],
     skills: ['Attack', 'GF', 'Draw', 'Item'],
@@ -317,6 +397,8 @@ const partyMembers = [
   },
   {
     name: 'Zell',
+    id: 'zell',
+    image: './images/zell.png',
     level: 100,
     skills: ['Attack', 'GF', 'Magic', 'Devour'],
     gfs: ['Shiva', 'Ifrit', 'Diablos', 'Tonberry', 'Eden'],
