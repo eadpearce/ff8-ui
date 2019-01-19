@@ -112,7 +112,7 @@
         <p class="measure">You can navigate the menus with the keyboard by tabbing or with the mouse. To exit out of the current menu press the escape key.</p>
       </aside>
 
-      <section class="gf-menu submenu hidden db fl h-100 w-100" id="gf-menu">
+      <section class="gf-menu submenu dn fl h-100 w-100" id="gf-menu">
 
         <header class="w-75 mb2" id="gf-submenu-header">
           <div class="bg-grey ph3 mt2 submenu-header">
@@ -121,9 +121,9 @@
         </header>
 
         <div class="w-100">
-          <div class="menu-help bg-grey ph3 mh4">
+          <div class="menu-help bg-grey ph3 mh3">
             <h2 class="subheading">Help</h2>
-            <h3 class="mb2 mt3 f2" id="gf-menu-title">GF {{ menuHelp }}</h3>
+            <h3 class="mb2 mt3 f2" id="gf-menu-title">{{ menuHelp }}</h3>
           </div>
         </div>
 
@@ -133,8 +133,8 @@
             <li class="db fl eigth pa2" v-for="gf in gfs">
               <a href="#" class="db gf-portrait relative pointer"
                 v-bind:title="gf.name"
-                v-on:focus="menuHelp = gf.name"
-                v-on:mouseover="menuHelp = gf.name">
+                v-on:focus="menuHelp = gf.help"
+                v-on:mouseover="menuHelp = gf.help">
                 <img class="w-100" v-bind:src="gf.image" v-bind:alt="gf.name">
               </a>
               <p class="f3 b pt1 pb3 font-play">
@@ -148,7 +148,7 @@
         </section>
       </section>
 
-      <section class="junction-menu submenu hidden db fl h-100 w-100" id="junction-menu">
+      <section class="junction-menu submenu dn fl h-100 w-100" id="junction-menu">
 
         <header class="w-75 mb2" id="junction-submenu-header">
           <nav class="bg-grey ph3 mt2 submenu-header">
@@ -167,11 +167,102 @@
           </nav>
         </header>
 
-        <section class="w-100 ph4">
-          <div class="menu-help bg-grey ph3">
+        <section class="w-100 ph3">
+          <div class="menu-help bg-grey ph3" id="junction-menu-help">
             <h2 class="subheading">Help</h2>
             <h3 class="mb2 mt3 f2" id="junction-menu-title">{{ menuHelp }}</h3>
           </div>
+        </section>
+
+        <section class="w-100 ph3 relative mt3 overflow-hidden" id="junction-menu-container">
+
+          <article class="junction-character"
+            v-bind:class="[currentCharacter == character.id ? 'active' : 'inactive']"
+            v-for="character in partyMembers"
+            v-bind:id="character.id">
+
+            <div class="w-100">
+              <div class="w-50 db fl f2 profile">
+                <img class="fl h4 mr3"
+                  v-bind:src="character.image"
+                  v-bind:alt="character.name">
+
+                <h2 class="mb2">{{ character.name }}</h2>
+                <dl>
+                  <div class="mb2">
+                    <dt class="dib">Level</dt>
+                    <dd class="db fr tr">{{ character.level }}</dd>
+                  </div>
+                  <div class="mb2">
+                    <dt class="dib">HP</dt>
+                    <dd class="db fr tr">{{ character.stats.hp.value }} / {{ character.stats.hp.value }}</dd>
+                  </div>
+                </dl>
+                <dl>
+                  <div>
+                    <dt class="dib">Current EXP</dt>
+                    <dd class="db fr tr font-play">99000p</dd>
+                  </div>
+                  <div>
+                    <dt class="dib">Next level</dt>
+                    <dd class="db fr tr font-play">0p</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="w-25 fr bg-grey ph3 pb3">
+                <h2 class="subheading">Command</h2>
+                <ul class="mt3 f2" aria-label="Skills">
+                  <li v-for="skill in character.skills">
+                    {{ skill }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="cf"></div>
+
+            <div class="stats drop-shadow bg-grey mt3 pv2 ph4 w-100 cb f2">
+              <dl>
+                <div class="w-50 fl pr2">
+                  <div class="mb1"
+                    v-for="stat in stats1">
+                    <dt class="db fl"
+                      v-bind:title="stat.help"
+                      v-bind:aria-label="stat.verboseName">
+                      {{ stat.name }}</dt>
+                    <dd class="db fr w-75">
+                      <ul>
+                        <li class="db fl w-two-thirds">{{ character.stats[stat.id].magic }}</li>
+                        <li class="db fr w-third tr">{{ character.stats[stat.id].value }}</li>
+                      </ul>
+                    </dd>
+                    <div class="cf"></div>
+                  </div>
+                </div>
+
+                <div class="w-50 fl pl2">
+                  <div>&nbsp;</div>
+                  <div class="mb1"
+                    v-for="stat in stats2">
+                    <dt class="db fl"
+                      v-bind:title="stat.help"
+                      v-bind:aria-label="stat.verboseName">
+                      {{ stat.name }}</dt>
+                    <dd class="db fr w-75">
+                      <ul>
+                        <li class="db fl w-two-thirds">{{ character.stats[stat.id].magic }}</li>
+                        <li class="db fr w-third tr">{{ character.stats[stat.id].value }}</li>
+                      </ul>
+                    </dd>
+                    <div class="cf"></div>
+                  </div>
+                </div>
+                <div class="cf"></div>
+              </dl>
+            </div>
+
+          </article>
+
         </section>
 
       </section>

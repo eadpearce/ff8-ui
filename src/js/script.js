@@ -12,6 +12,9 @@ var app = new Vue({
     currentMenu: 'main',
     activeClass: 'active',
     gfs: gfs,
+    currentCharacter: 'quistis',
+    stats1: stats1,
+    stats2: stats2
   },
   methods: {
     showMenu: showMenu,
@@ -22,7 +25,6 @@ var app = new Vue({
 
 function showMenu(e) {
   if (app.mainMenuOpen) {
-    app.mainMenuOpen = false;
     closeMainMenu(e);
     app.currentMenu = e.target.id;
     $('#'+e.target.id+'-menu').delay(250).fadeIn(250);
@@ -53,7 +55,7 @@ function closeMainMenu(e) {
   }, 250);
 
   remainingItems.forEach(function(itemID) {
-    $('#'+itemID).addClass('hidden');
+    $('#'+itemID).addClass('dn');
     // disable keyboard focus
     $('#'+itemID).attr('tabIndex', -1);
     // animate
@@ -73,7 +75,8 @@ function handleAppKeydown(e) {
     }
 
     $('.main-menu').removeClass('collapsed');
-    $('.menu-item').removeClass('hidden');
+    $('#main-menu-container').removeClass('collapsed');
+    $('.menu-item').removeClass('dn');
     $('#player-stats').delay(250).fadeIn(250);
     $('#left-content').delay(250).fadeIn(250);
 
